@@ -34,6 +34,11 @@ RobloxCompat.Services = {
                 return {valid = false} 
             end
             return {valid = false} 
+        end,
+        HttpGet = function(_, url)
+            -- Simulate HttpGet method
+            print("Simulating HttpGet for URL: " .. url)
+            return "-- Simulated content from " .. url
         end
     }
 }
@@ -103,6 +108,11 @@ ColorSequenceKeypoint = RobloxCompat.ColorSequenceKeypoint
 local function fireclickdetector() end
 local function fireproximityprompt() end
 local function firetouchinterest() end
+
+-- Add HttpGet to global environment
+local function HttpGet(url)
+    return game:GetService("HttpService"):HttpGet(url)
+end
 
 -- Replace global environment with compatibility layer
 game = RobloxCompat.Services
